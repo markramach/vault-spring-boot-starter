@@ -1,6 +1,6 @@
 ## spring-boot-starter-vault
 
-As we look to build highly scalable applications in the cloud, we commonly struggle with the task of securing our passwords, API keys and other critical secrets. How do we allow our applications to access these secrets in a scalable and secure manner without distributing the secrets themselves? One possible solution is a secure secret storage tool like (Vault)[https://www.vaultproject.io/]. Vault provides secure secret storage with a variety of persistent storage options. The Vault product also provides a complete REST API for configuration and access to your secrets. This project will leverage these REST operations to make the injection of Vault secret properties into a Spring Boot application as simple as possible.
+As we look to build highly scalable applications in the cloud, we commonly struggle with the task of securing our passwords, API keys and other critical secrets. How do we allow our applications to access these secrets in a scalable and secure manner without distributing the secrets themselves? One possible solution is a secure secret storage tool like [Vault](https://www.vaultproject.io/). Vault provides secure secret storage with a variety of persistent storage options. The Vault product also provides a complete REST API for configuration and access to your secrets. This project will leverage these REST operations to make the injection of Vault secret properties into a Spring Boot application as simple as possible.
 
 ### Getting Started
 
@@ -14,7 +14,7 @@ Once installed, you can start a development server using the following command.
 
 	vault server -dev
 	
-At this point you should have running Vault server running locally. Because the `-dev` argument was specified, the server instance is initialized and unsealed. In a typical production installation this will not be the case. You will need to follow the procedure to initialize and unseal the vault demonstrated in the (Basic Concepts)[https://www.vaultproject.io/docs/concepts/index.html] documentation.
+At this point you should have running Vault server running locally. Because the `-dev` argument was specified, the server instance is initialized and unsealed. In a typical production installation this will not be the case. You will need to follow the procedure to initialize and unseal the vault demonstrated in the [Basic Concepts](https://www.vaultproject.io/docs/concepts/index.html) documentation.
 
 ### Spring Boot Configuration
 
@@ -89,7 +89,7 @@ After configuration is complete, you should be able to inject the Vault properti
 
 ### App ID Authentication
 
-An alternate authentication option is (App ID)[https://www.vaultproject.io/docs/auth/app-id.html]. This authentication strategy uses 2 pieces of information, an application ID and a user ID. Typically the user ID is only available to the host running the application. This starter project creates a HMAC value using all the resources from the application classpath to dynamically create that unique identifier. The user ID is then pushed to vault with the corresponding application ID allowing this version of our application access to secrets.
+An alternate authentication option is [App ID](https://www.vaultproject.io/docs/auth/app-id.html). This authentication strategy uses 2 pieces of information, an application ID and a user ID. Typically the user ID is only available to the host running the application. This starter project creates a HMAC value using all the resources from the application classpath to dynamically create that unique identifier. The user ID is then pushed to vault with the corresponding application ID allowing this version of our application access to secrets.
 
 In order to use this authentication type, let first create a token that can be used to push the application ID and user ID to vault. 
 
