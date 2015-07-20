@@ -22,6 +22,7 @@ public class VaultConfiguration {
     private boolean failFast = false;
     private List<String> paths = new LinkedList<String>();
     private AuthType authType = AuthType.TOKEN;
+    private String mount = "secret";
     
     // Authentication properties
     private String appId;
@@ -186,6 +187,20 @@ public class VaultConfiguration {
      */
     public void setPushUserId(boolean pushUserId) {
         this.pushUserId = pushUserId;
+    }
+
+    /**
+     * @return the mount
+     */
+    public String getMount() {
+        return mount;
+    }
+
+    /**
+     * @param mount the mount to set
+     */
+    public void setMount(String mount) {
+        this.mount = mount;
     }
 
 }

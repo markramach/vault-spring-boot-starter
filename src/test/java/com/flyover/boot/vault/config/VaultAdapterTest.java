@@ -43,7 +43,7 @@ public class VaultAdapterTest {
         
         stubGetValue();
         
-        String value = adapter.getValue("ebf1abbc-9a04-7534-7b21-76d240d41f1a", "secret/foo");
+        String value = adapter.getValue("ebf1abbc-9a04-7534-7b21-76d240d41f1a", "foo");
         
         verify(getRequestedFor(urlMatching("/v1/secret/foo"))
                 .withHeader("Cookie", equalTo("token=ebf1abbc-9a04-7534-7b21-76d240d41f1a")));
@@ -57,7 +57,7 @@ public class VaultAdapterTest {
         
         stubSetValue();
         
-        adapter.setValue("ebf1abbc-9a04-7534-7b21-76d240d41f1a", "secret/foo", "value");
+        adapter.setValue("ebf1abbc-9a04-7534-7b21-76d240d41f1a", "foo", "value");
         
         verify(postRequestedFor(urlMatching("/v1/secret/foo"))
                 .withHeader("Cookie", equalTo("token=ebf1abbc-9a04-7534-7b21-76d240d41f1a"))

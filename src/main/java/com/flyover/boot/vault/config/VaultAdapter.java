@@ -36,7 +36,8 @@ public class VaultAdapter {
         
         try {
             ResponseEntity<Map> res = new RestTemplate().exchange(
-                    configuration.getEndpoint() + "/{path}", HttpMethod.GET, new HttpEntity(headers), Map.class, path);
+                    configuration.getEndpoint() + "/{mount}/{path}", HttpMethod.GET, new HttpEntity(headers), Map.class, 
+                            configuration.getMount(), path);
             
             
             Map<String, Object> data = (Map<String, Object>) res.getBody().get("data");
@@ -60,8 +61,9 @@ public class VaultAdapter {
         HttpHeaders headers = new HttpHeaders();
         headers.set(HttpHeaders.COOKIE, String.format("token=%s", token));
         
-        new RestTemplate().exchange(configuration.getEndpoint() + "/{path}", HttpMethod.POST, 
-                new HttpEntity(Collections.singletonMap("value", value), headers), Void.class, path);
+        new RestTemplate().exchange(configuration.getEndpoint() + "/{mount}/{path}", HttpMethod.POST, 
+                new HttpEntity(Collections.singletonMap("value", value), headers), Void.class, 
+                        configuration.getMount(), path);
         
     }
 
