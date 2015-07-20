@@ -1,0 +1,1 @@
+{"lease_id":"secret/test/f83f1894-e107-6daf-1211-135237637f92","renewable":false,"lease_duration":2592000,"data":{"value":"Hello World!"},"auth":null}

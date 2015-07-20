@@ -1,0 +1,10 @@
+{
+  "data": {
+    "id": "ClientToken",
+    "policies": ["web", "stage"],
+    "path": "auth/github/login",
+    "meta": {"user": "armon", "organization": "hashicorp"},
+    "display_name": "github-armon",
+    "num_uses": 0
+  }
+}

@@ -1,0 +1,3 @@
+# Bootstrap components
+org.springframework.cloud.bootstrap.BootstrapConfiguration=\
+com.flyover.boot.vault.config.VaultBootstrapConfiguration
