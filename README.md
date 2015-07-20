@@ -55,11 +55,11 @@ The most straightforward way to authenticate with Vault is the use of pre-genera
 
 	vault token-create
 	
-This should return a token that can then be used for authentication. 
+This should return a token that can then be used for authentication. For example: 
 
 	0c6c3fce-09ee-72aa-fd5e-4d6f1152b002
 
-To test the token you can execute the following command.
+To test the token, you can execute the following command.
 
 	vault auth 0c6c3fce-09ee-72aa-fd5e-4d6f1152b002
 
@@ -81,7 +81,7 @@ Now you can configure token based authentication in the bootstrap.yml file using
 	  authType: TOKEN
 	  token: 0c6c3fce-09ee-72aa-fd5e-4d6f1152b002
 
-Note that `TOKEN` is actually the default authentication type and will be used if not specified. However, for clarity it is shown above. ALso note that any configuration item can be specified on the command line when starting the Spring Boot application and is recommended if using token base authentication. For example:
+Note that `TOKEN` is actually the default authentication type and will be used if not specified. However, for clarity it is shown above. Also note that any configuration item can be specified on the command line when starting the Spring Boot application and is recommended if using token base authentication. For example:
 
 	java -jar spring-boot-app.jar --vault.token=0c6c3fce-09ee-72aa-fd5e-4d6f1152b002
 
@@ -95,11 +95,11 @@ In order to use this authentication type, let first create a token that can be u
 
 	vault token-create
 	
-This should return a token that can then be used for authentication. 
+This should return a token that can then be used for authentication. For example: 
 
 	0c6c3fce-09ee-72aa-fd5e-4d6f1152b002
 
-To test the token you can execute the following command.
+To test the token, you can execute the following command.
 
 	vault auth 0c6c3fce-09ee-72aa-fd5e-4d6f1152b002
 
@@ -153,7 +153,7 @@ I have found that this particular strategy is very powerful when deploying to cl
 
 ### Additional Configuration
 
-`vault.mount` - Once you have some familiarity with Vault you will notice you can create any number of backend mount points. A mount is a path extension the corresponds to a persistent storage solution. You can specify the mount point configuration using the vault.mount configuration value on the command line. Or, you can specify it in the bootstrap.yml file like the following.
+`vault.mount` - Once you have some familiarity with Vault you will notice you can create any number of backend mount points. A mount is a path extension that corresponds to a persistent storage solution. You can specify the mount point configuration using the vault.mount configuration value on the command line. Or, you can specify it in the bootstrap.yml file like the following.
 
 	vault:
 	  endpoint: http://hostname:port/v1
