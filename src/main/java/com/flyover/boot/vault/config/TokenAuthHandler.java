@@ -21,6 +21,7 @@ public class TokenAuthHandler implements AuthHandler {
         
         HttpHeaders headers = new HttpHeaders();
         headers.set(HttpHeaders.COOKIE, String.format("token=%s", configuration.getToken()));
+        headers.set("X-Vault-Token", configuration.getToken());
         
         new RestTemplate().exchange(configuration.getEndpoint() + "/auth/token/lookup-self", HttpMethod.GET, 
                 new HttpEntity(headers), Map.class);

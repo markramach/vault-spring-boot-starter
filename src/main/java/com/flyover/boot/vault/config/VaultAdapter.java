@@ -31,8 +31,7 @@ public class VaultAdapter {
 
     public String getValue(String token, String path) {
         
-        HttpHeaders headers = new HttpHeaders();
-        headers.set(HttpHeaders.COOKIE, String.format("token=%s", token));
+        HttpHeaders headers = createHeaders(token);
         
         try {
             ResponseEntity<Map> res = new RestTemplate().exchange(
@@ -58,8 +57,7 @@ public class VaultAdapter {
     
     public void setValue(String token, String path, String value) {
         
-        HttpHeaders headers = new HttpHeaders();
-        headers.set(HttpHeaders.COOKIE, String.format("token=%s", token));
+        HttpHeaders headers = createHeaders(token);
         
         new RestTemplate().exchange(configuration.getEndpoint() + "/{mount}/{path}", HttpMethod.POST, 
                 new HttpEntity(Collections.singletonMap("value", value), headers), Void.class, 
@@ -77,11 +75,20 @@ public class VaultAdapter {
     
     public void addUserId(String token, String appId, String userId) {
         
-        HttpHeaders headers = new HttpHeaders();
-        headers.set(HttpHeaders.COOKIE, String.format("token=%s", token));
+        HttpHeaders headers = createHeaders(token);
         
         new RestTemplate().exchange(configuration.getEndpoint() + "/auth/app-id/map/user-id/{userId}", HttpMethod.POST, 
                 new HttpEntity(Collections.singletonMap("value", appId), headers), Map.class, userId);
+        
+    }
+
+    private HttpHeaders createHeaders(String token) {
+        
+        HttpHeaders headers = new HttpHeaders();
+        headers.set(HttpHeaders.COOKIE, String.format("token=%s", token));
+        headers.set("X-Vault-Token", token);
+        
+        return headers;
         
     }
     

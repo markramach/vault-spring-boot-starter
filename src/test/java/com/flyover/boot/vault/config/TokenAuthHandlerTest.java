@@ -49,6 +49,8 @@ public class TokenAuthHandlerTest {
                 getResource("vault/get_auth_token_lookup_self.json").toURI());
 
         stubFor(get(urlMatching("/v1/auth/token/lookup-self"))
+                .withHeader("Cookie", equalTo("token=ebf1abbc-9a04-7534-7b21-76d240d41f1a"))
+                .withHeader("X-Vault-Token", equalTo("ebf1abbc-9a04-7534-7b21-76d240d41f1a"))
                 .willReturn(aResponse()
                         .withStatus(200)
                         .withHeader("Content-Type", "application/json")

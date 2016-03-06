@@ -85,6 +85,7 @@ public class AppIdAuthHandler implements AuthHandler {
         
         HttpHeaders headers = new HttpHeaders();
         headers.set(HttpHeaders.COOKIE, String.format("token=%s", configuration.getToken()));
+        headers.set("X-Vault-Token", configuration.getToken());
         
         new RestTemplate().exchange(configuration.getEndpoint() + "/auth/app-id/map/user-id/{userId}", HttpMethod.POST, 
                 new HttpEntity(Collections.singletonMap("value", configuration.getAppId()), headers), Map.class, userId);
@@ -95,6 +96,7 @@ public class AppIdAuthHandler implements AuthHandler {
         
         HttpHeaders headers = new HttpHeaders();
         headers.set(HttpHeaders.COOKIE, String.format("token=%s", token));
+        headers.set("X-Vault-Token", token);
         
         new RestTemplate().exchange(configuration.getEndpoint() + "/auth/token/revoke/{token}", HttpMethod.PUT, 
                 new HttpEntity(headers), Void.class, token);

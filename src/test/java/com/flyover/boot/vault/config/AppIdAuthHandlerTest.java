@@ -104,7 +104,9 @@ public class AppIdAuthHandlerTest {
             
         }
         
-        verify(putRequestedFor(urlMatching("/v1/auth/token/revoke/.*")));
+        verify(putRequestedFor(urlMatching("/v1/auth/token/revoke/.*"))
+                .withHeader("Cookie", equalTo("token=ebf1abbc-9a04-7534-7b21-76d240d41f1a"))
+                .withHeader("X-Vault-Token", equalTo("ebf1abbc-9a04-7534-7b21-76d240d41f1a")));
         
     }
     

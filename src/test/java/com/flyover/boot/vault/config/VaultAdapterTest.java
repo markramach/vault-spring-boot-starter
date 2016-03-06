@@ -46,7 +46,8 @@ public class VaultAdapterTest {
         String value = adapter.getValue("ebf1abbc-9a04-7534-7b21-76d240d41f1a", "foo");
         
         verify(getRequestedFor(urlMatching("/v1/secret/foo"))
-                .withHeader("Cookie", equalTo("token=ebf1abbc-9a04-7534-7b21-76d240d41f1a")));
+                .withHeader("Cookie", equalTo("token=ebf1abbc-9a04-7534-7b21-76d240d41f1a"))
+                .withHeader("X-Vault-Token", equalTo("ebf1abbc-9a04-7534-7b21-76d240d41f1a")));
         
         assertNotNull("Checking that the value is not null.", value);
         
@@ -61,6 +62,7 @@ public class VaultAdapterTest {
         
         verify(postRequestedFor(urlMatching("/v1/secret/foo"))
                 .withHeader("Cookie", equalTo("token=ebf1abbc-9a04-7534-7b21-76d240d41f1a"))
+                .withHeader("X-Vault-Token", equalTo("ebf1abbc-9a04-7534-7b21-76d240d41f1a"))
                 .withRequestBody(equalToJson("{\"value\":\"value\"}")));
         
     }
