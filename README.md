@@ -1,4 +1,4 @@
-## spring-boot-starter-vault
+## vault-spring-boot-starter
 
 As we look to build highly scalable applications in the cloud, we commonly struggle with the task of securing our passwords, API keys and other critical secrets. How do we allow our applications to access these secrets in a scalable and secure manner without distributing the secrets themselves? One possible solution is a secure secret storage tool like [Vault](https://www.vaultproject.io/). Vault provides secure secret storage with a variety of persistent storage options. The Vault product also provides a complete REST API for configuration and access to your secrets. This project will leverage these REST operations to make the injection of Vault secret properties into a Spring Boot application as simple as possible.
 
@@ -6,7 +6,7 @@ As we look to build highly scalable applications in the cloud, we commonly strug
 
 The easiest way to get started with this starter project is to fork, clone or download this repository.
 
-	git clone https://github.com/markramach/spring-boot-starter-vault.git  
+	git clone https://github.com/markramach/vault-spring-boot-starter.git  
 	
 You will also need to install [Vault](https://www.vaultproject.io/docs/install/index.html).
 
